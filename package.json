@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "build": "babel backend --out-dir backendBuild --extensions \".ts,.tsx\" --source-maps inline",
-    "start": "node backendBuild/server.js",
-    "server": "nodemon backendBuild/server.js"
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js"
   },
   "author": "Jason",
   "license": "MIT",

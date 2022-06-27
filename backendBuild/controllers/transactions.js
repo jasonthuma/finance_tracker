@@ -1,4 +1,0 @@
-"use strict";
-
-var knex = require("knex");
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJrbmV4IiwicmVxdWlyZSJdLCJzb3VyY2VzIjpbIi4uLy4uL2JhY2tlbmQvY29udHJvbGxlcnMvdHJhbnNhY3Rpb25zLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImNvbnN0IGtuZXggPSByZXF1aXJlKFwia25leFwiKTtcclxuIl0sIm1hcHBpbmdzIjoiOztBQUFBLElBQU1BLElBQUksR0FBR0MsT0FBTyxDQUFDLE1BQUQsQ0FBcEIifQ==
