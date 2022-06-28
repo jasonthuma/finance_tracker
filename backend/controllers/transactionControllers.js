@@ -1,31 +1,37 @@
 const knex = require("../utils/knex");
-const Transaction = require("../models/transactions");
+const asyncHandler = require("express-async-handler");
+const Transaction = require("../models/transactionModel");
 
 exports.getTransactions = (req, res) => {
   knex
     .select()
     .from("transactions")
+    .where("user_id", req.user.user_id)
     .then((transactions) => {
       res.send(transactions);
     });
 };
 
-exports.getTransactionById = (req, res) => {
-  knex
+exports.getTransactionById = asyncHandler(async (req, res) => {
+  const transaction = await knex
     .select()
     .from("transactions")
-    .where("transaction_id", req.params.id)
-    .then((transaction) => {
-      res.send(transaction);
-    });
-};
+    .first()
+    .where("user_id", req.user.user_id)
+    .andWhere("transaction_id", req.params.id);
+  if (transaction) {
+    res.send(transaction);
+  } else {
+    res.status(400);
+    throw new Error("Transaction not found");
+  }
+});
 
 exports.createTransaction = (req, res) => {
   const transaction = new Transaction(req.body);
-  console.log(req.body);
-  console.log(transaction.transaction_date);
   knex("transactions")
     .insert({
+      user_id: req.user.user_id,
       transaction_date: transaction.transaction_date,
       category: transaction.category,
       amount: transaction.amount,
@@ -36,15 +42,17 @@ exports.createTransaction = (req, res) => {
     });
 };
 
-exports.updateTransaction = async (req, res) => {
-  let transactionsFound = await knex
+exports.updateTransaction = asyncHandler(async (req, res) => {
+  let transactionToUpdate = await knex
     .select()
     .from("transactions")
-    .where("transaction_id", req.params.id);
-  if (transactionsFound.length === 0) {
-    res.send({ error: "Transaction not found" });
+    .first()
+    .where("user_id", req.user.user_id)
+    .andWhere("transaction_id", req.params.id);
+  if (!transactionToUpdate) {
+    res.status(400);
+    throw new Error("Transaction not found");
   } else {
-    let transactionToUpdate = transactionsFound[0];
     if (req.body.transaction_date !== undefined) {
       transactionToUpdate.transaction_date = req.body.transaction_date;
     }
@@ -60,6 +68,7 @@ exports.updateTransaction = async (req, res) => {
     knex("transactions")
       .where("transaction_id", req.params.id)
       .update({
+        user_id: req.user.user_id,
         transaction_date: transactionToUpdate.transaction_date,
         category: transactionToUpdate.category,
         amount: transactionToUpdate.amount,
@@ -69,23 +78,26 @@ exports.updateTransaction = async (req, res) => {
         res.send(transactionToUpdate);
       });
   }
-};
+});
 
-exports.deleteTransaction = async (req, res) => {
-  let transactionsFound = await knex
+exports.deleteTransaction = asyncHandler(async (req, res) => {
+  const transactionToDelete = await knex
     .select()
-    .from('transactions')
-    .where("transaction_id", req.params.id);
+    .from("transactions")
+    .first()
+    .where("user_id", req.user.user_id)
+    .andWhere("transaction_id", req.params.id);
 
-  if(transactionsFound.length === 0) {
-    res.send({error: "Transaction not found"})
+  if (!transactionToDelete) {
+    res.status(400);
+    throw new Error("Transaction not found");
   } else {
-    let transactionToDelete = transactionsFound[0];
     knex("transactions")
-      .where("transaction_id", req.params.id)
+      .where("user_id", req.user.user_id)
+      .andWhere("transaction_id", req.params.id)
       .del()
       .then(() => {
-        res.send(transactionToDelete)
-      })
+        res.send(transactionToDelete);
+      });
   }
-}
+});
