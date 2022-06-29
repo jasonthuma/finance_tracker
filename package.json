@@ -4,9 +4,9 @@
   "description": "Finance Tracker",
   "main": "server.js",
   "scripts": {
-    "build": "babel backend --out-dir backendBuild --extensions \".ts,.tsx\" --source-maps inline",
     "start": "node backend/server.js",
-    "server": "nodemon backend/server.js"
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend"
   },
   "author": "Jason",
   "license": "MIT",

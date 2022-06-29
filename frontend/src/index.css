@@ -1,0 +1,67 @@
+.plus {
+  color: #49be25;
+}
+.minus {
+  color: #c91919;
+}
+.money {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+.historyList {
+  list-style: none;
+}
+.app-body {
+  background-color: #edefef;
+  height: 100vh;
+  margin-top: 40px;
+}
+.navbar {
+  color: #edefef;
+  background-image: linear-gradient(to right, #434343 0%, rgb(33, 33, 33) 100%);
+}
+Link {
+  color: #2ecc71;
+}
+.margins {
+  background-image: linear-gradient(to right, #434343 0%, rgb(33, 33, 33) 100%);
+}
+.historyList li {
+  background-color: #fff;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 10px;
+  margin: 10px 0;
+}
+.historyList li.plus {
+  border-right: 5px solid #2ecc71 !important;
+}
+.historyList li.minus {
+  border-right: 5px solid #c0392b !important;
+}
+.delete-btn {
+  cursor: pointer;
+  background-color: #e74c3c;
+  border: 0;
+  color: #fff;
+  font-size: 20px;
+  line-height: 20px;
+  padding: 2px 5px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-100%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.historyList li:hover .delete-btn {
+  opacity: 1;
+}
+.inc-exp {
+  background-color: #fff;
+}
+.light-text {
+  color: #edefef;
+}
