@@ -54,13 +54,11 @@ export const CreateTransaction: React.FC = () => {
         setAlertText("Please select a category");
         return;
       }
-      console.log(determineCategory(category));
 
       determineCategory(category)
         ? (convertedAmount = amount)
         : (convertedAmount = 0 - amount);
 
-      console.log(convertedAmount);
       const newTransaction: NewTransaction = {
         userId: user.id,
         description,
@@ -72,7 +70,6 @@ export const CreateTransaction: React.FC = () => {
         newTransaction,
         userToken: jwt,
       };
-      console.log(userData);
 
       dispatch(createTransaction(userData));
     }
