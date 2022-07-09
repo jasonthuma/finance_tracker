@@ -13,7 +13,7 @@
 }
 .app-body {
   background-color: #edefef;
-  height: 100vh;
+  min-height: 100vh;
   margin-top: 40px;
 }
 .navbar {
@@ -26,19 +26,23 @@ Link {
 .margins {
   background-image: linear-gradient(to right, #434343 0%, rgb(33, 33, 33) 100%);
 }
-.historyList li {
+.accordion-button {
   background-color: #fff;
   color: #333;
   display: flex;
   justify-content: space-between;
   position: relative;
-  padding: 10px;
-  margin: 10px 0;
 }
-.historyList li.plus {
+.accordion-button::after {
+  display: none;
+}
+.accordion-item {
+  color: #333;
+}
+.accordion-item.plus {
   border-right: 5px solid #2ecc71 !important;
 }
-.historyList li.minus {
+.accordion-item.minus {
   border-right: 5px solid #c0392b !important;
 }
 .delete-btn {

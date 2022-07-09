@@ -8,7 +8,7 @@ exports.getTransactions = (req, res) => {
     .from("transactions")
     .where("user_id", req.user.user_id)
     .then((transactions) => {
-      res.send(transactions);
+      res.json(transactions);
     });
 };
 
@@ -32,7 +32,6 @@ exports.createTransaction = (req, res) => {
   knex("transactions")
     .insert({
       user_id: req.user.user_id,
-      transaction_date: transaction.transaction_date,
       category: transaction.category,
       amount: transaction.amount,
       description: transaction.description,
@@ -53,9 +52,6 @@ exports.updateTransaction = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Transaction not found");
   } else {
-    if (req.body.transaction_date !== undefined) {
-      transactionToUpdate.transaction_date = req.body.transaction_date;
-    }
     if (req.body.category !== undefined) {
       transactionToUpdate.category = req.body.category;
     }
@@ -69,7 +65,7 @@ exports.updateTransaction = asyncHandler(async (req, res) => {
       .where("transaction_id", req.params.id)
       .update({
         user_id: req.user.user_id,
-        transaction_date: transactionToUpdate.transaction_date,
+        transaction_id: req.params.id,
         category: transactionToUpdate.category,
         amount: transactionToUpdate.amount,
         description: transactionToUpdate.description,

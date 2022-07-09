@@ -7,13 +7,12 @@ const {
   updateTransaction,
   deleteTransaction,
 } = require("../controllers/transactionControllers");
-const { validateTransaction } = require("../utils/validation");
 const { protect } = require("../middleware/authMiddleware");
 
 router
   .route("/transactions")
   .get(protect, getTransactions)
-  .post(protect, validateTransaction, createTransaction);
+  .post(protect, createTransaction);
 router
   .route("/transactions/:id")
   .get(protect, getTransactionById)
