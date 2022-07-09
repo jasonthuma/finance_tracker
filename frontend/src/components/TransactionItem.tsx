@@ -23,7 +23,7 @@ const TransactionItem: React.FC<TransactionProps> = ({ transaction }) => {
   const handleUpdateClose = () => setUpdateShow(false);
   const handleUpdateShow = () => setUpdateShow(true);
   const [description, setDescription] = useState(transaction.description);
-  const [amount, setAmount] = useState(transaction.amount);
+  const [amount, setAmount] = useState(Math.abs(transaction.amount));
   const [category, setCategory] = useState(transaction.category);
   const [id] = useState(transaction.transaction_id);
   const [updateAlert, setUpdateAlert] = useState("");
@@ -41,7 +41,7 @@ const TransactionItem: React.FC<TransactionProps> = ({ transaction }) => {
   //Global State
   const { jwt } = useAppSelector((state) => state.authReducer);
   useEffect(() => {
-    setAmount(transaction.amount);
+    setAmount(Math.abs(transaction.amount));
     setCategory(transaction.category);
     setDescription(transaction.description);
   }, [transaction.amount, transaction.category, transaction.description]);
