@@ -86,6 +86,7 @@ export const CreateTransaction: React.FC = () => {
                   <Form.Label>Description</Form.Label>
                   <Form.Control
                     type="text"
+                    data-testid={"description"}
                     value={description}
                     onChange={handleDescriptionChange}
                     placeholder="Enter description"

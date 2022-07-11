@@ -198,7 +198,7 @@ const TransactionItem: React.FC<TransactionProps> = ({ transaction }) => {
             </div>
             <div className="text-center">
               <Button variant="secondary" type="submit" className="mt-3">
-                Update Transaction
+                Submit Update
               </Button>
             </div>
           </Form>
