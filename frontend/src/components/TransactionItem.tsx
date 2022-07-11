@@ -69,6 +69,10 @@ const TransactionItem: React.FC<TransactionProps> = ({ transaction }) => {
     }
   };
 
+  const handleFocus = (e: any) => {
+    e.target.select();
+  };
+
   const onUpdateFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (jwt) {
@@ -161,6 +165,7 @@ const TransactionItem: React.FC<TransactionProps> = ({ transaction }) => {
                     type="text"
                     value={description}
                     onChange={handleDescriptionChange}
+                    onFocus={handleFocus}
                     placeholder="Enter description"
                     className="mb-1 border border-secondary"
                   />
@@ -171,6 +176,7 @@ const TransactionItem: React.FC<TransactionProps> = ({ transaction }) => {
                     type="number"
                     value={amount}
                     onChange={handleAmountChange}
+                    onFocus={handleFocus}
                     className="mb-1 border border-secondary"
                   />
                 </Form.Group>

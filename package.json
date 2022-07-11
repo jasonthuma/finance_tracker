@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "Finance Tracker",
   "main": "server.js",
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules",
+      "/frontend"
+    ]
+  },
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
