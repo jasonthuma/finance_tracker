@@ -37,6 +37,10 @@ export const CreateTransaction: React.FC = () => {
       : setAddBtnColor("danger");
   }, [category]);
 
+  const handleFocus = (e: any) => {
+    e.target.select();
+  };
+
   const onCreateFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -99,6 +103,7 @@ export const CreateTransaction: React.FC = () => {
                     type="number"
                     value={amount}
                     onChange={handleAmountChange}
+                    onFocus={handleFocus}
                     placeholder="Enter amount"
                     className="mb-1 border border-secondary"
                   />
