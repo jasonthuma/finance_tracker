@@ -1,6 +1,7 @@
 import { useAppSelector } from "../hooks/redux/hooks";
 import TransactionItem from "./TransactionItem";
 import { Accordion } from "react-bootstrap";
+import { Transaction } from "../redux/transactions/models/Transaction";
 
 const RecentTransactionHistory: React.FC = () => {
   const { transactions } = useAppSelector((state) => state.transactionReducer);
@@ -13,7 +14,7 @@ const RecentTransactionHistory: React.FC = () => {
           <h3>Recent History</h3>
           <div className="text-start">
             <Accordion className="historyList ps-0">
-              {recentArray.map((transaction) => (
+              {recentArray.map((transaction: Transaction) => (
                 <TransactionItem
                   key={transaction.transaction_id}
                   transaction={transaction}
