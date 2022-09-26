@@ -1,5 +1,9 @@
 # Do not change version. This is the version of aws buildspec, not the version of your buldspec file.
 version: 0.2
+
+env:
+  variables:
+    NODE_ENV: "production"
 phases:
   pre_build:
     commands:
