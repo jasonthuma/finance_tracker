@@ -25,3 +25,4 @@ artifacts:
     - package-lock.json
     - "frontend/build/**/*"
     - "backend/**/*"
+    - "node_modules/"
