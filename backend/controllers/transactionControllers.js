@@ -12,6 +12,22 @@ exports.getTransactions = (req, res) => {
     });
 };
 
+exports.getTransactionsByAmount = asyncHandler(async (req, res) => {
+  const amount = req.query.amount;
+  console.log(amount);
+  const transactions = await knex
+    .select()
+    .from("transactions")
+    .where("user_id", req.user.user_id)
+    .andWhere("amount", amount);
+  if (transactions.length > 0) {
+    res.send(transactions);
+  } else {
+    res.status(400);
+    throw new Error(`No transactions found with amount: ${amount}`);
+  }
+});
+
 exports.getTransactionById = asyncHandler(async (req, res) => {
   const transaction = await knex
     .select()
@@ -29,6 +45,7 @@ exports.getTransactionById = asyncHandler(async (req, res) => {
 
 exports.createTransaction = (req, res) => {
   const transaction = new Transaction(req.body);
+  console.log(transaction);
   knex("transactions")
     .insert({
       user_id: req.user.user_id,

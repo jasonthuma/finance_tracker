@@ -6,6 +6,7 @@ const {
   createTransaction,
   updateTransaction,
   deleteTransaction,
+  getTransactionsByAmount,
 } = require("../controllers/transactionControllers");
 const { protect } = require("../middleware/authMiddleware");
 
@@ -13,6 +14,7 @@ router
   .route("/transactions")
   .get(protect, getTransactions)
   .post(protect, createTransaction);
+router.route("/search").get(protect, getTransactionsByAmount);
 router
   .route("/transactions/:id")
   .get(protect, getTransactionById)
