@@ -35,7 +35,7 @@ export const Header: React.FC = () => {
             }}
           >
             <h2 className="p-0">
-              <FaUniversity className="mx-1" /> Expense Tracker
+              <FaUniversity className="mx-1" /> Finance Tracker
             </h2>
           </Link>
         </div>
