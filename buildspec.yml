@@ -17,7 +17,7 @@ phases:
     commands:
       - echo Build completed on `date`
       - echo Running Tests on Latest Build
-      - npm run test --watchAll=false --prefix frontend
+      - npm run test --prefix frontend -- --watchAll=false
 # Include only the files required for your application to run.
 artifacts:
   files:
