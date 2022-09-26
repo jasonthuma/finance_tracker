@@ -16,6 +16,8 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
+      - echo Running Tests on Latest Build
+      - npm run test --prefix frontend
 # Include only the files required for your application to run.
 artifacts:
   files:
