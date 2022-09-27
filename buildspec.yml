@@ -10,14 +10,15 @@ phases:
       - npm install --prefix frontend
   build:
     commands:
+      - echo Running Tests on Latest Commit
+      - npm run test --prefix frontend
       - echo Build started on `date`
       - echo Compiling the dist folder
       - npm run build --prefix frontend
   post_build:
     commands:
       - echo Build completed on `date`
-      - echo Running Tests on Latest Build
-      - npm run test --prefix frontend
+
 # Include only the files required for your application to run.
 artifacts:
   files:
@@ -25,4 +26,3 @@ artifacts:
     - package-lock.json
     - "frontend/build/**/*"
     - "backend/**/*"
-    - "frontend/node_modules"
