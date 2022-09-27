@@ -24,7 +24,7 @@ Link {
   color: #2ecc71;
 }
 .margins {
-  background-image: linear-gradient(to right, #434343 0%, rgb(88, 0, 0) 100%);
+  background-image: linear-gradient(to right, #434343 0%, rgb(33, 33, 33) 100%);
 }
 .accordion-button {
   background-color: #fff;
