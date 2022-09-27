@@ -11,10 +11,10 @@
 module.exports = require("knex")({
   client: "mysql2",
   connection: {
-    host: process.env.HEROKU_DB_HOST,
-    user: process.env.HEROKU_DB_USER,
-    password: process.env.HEROKU_DB_PW,
-    database: process.env.HEROKU_DB_NAME,
+    host: process.env.AWS_DB_HOST,
+    user: process.env.AWS_DB_USER,
+    password: process.env.AWS_DB_PW,
+    database: process.env.AWS_DB_NAME,
     port: process.env.MYSQL_PORT || 3306,
   },
 });
